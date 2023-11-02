@@ -14,6 +14,7 @@ pdfRouter.get("/get-files", isAuthenticated, async (req, res) => {
 });
 
 pdfRouter.post("/upload-files", isAuthenticated, async (req, res) => {
+  console.log(req.headers);
   try {
     const file = await new PdfDetails({
       file: req.body.file,
