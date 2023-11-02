@@ -2,7 +2,8 @@ import mongoose from "mongoose";
 
 const { ObjectId } = mongoose.Schema;
 const pdfDetailsSchema = new mongoose.Schema({
-  pdf: String,
+  file: String,
+  fileUrl: String,
   creator: {
     type: ObjectId,
     ref: "user",
