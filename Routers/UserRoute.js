@@ -6,15 +6,15 @@ import "dotenv/config";
 
 export const userRouter = express.Router();
 
-// Login
+// Login Route
 userRouter.post("/login", async (req, res) => {
-  console.log("req received");
-  console.log(req.body);
   try {
+    // checking for valid user
     const user = await User.findOne({ email: req.body.email });
     if (!user) {
       return res.status(500).json({ message: "user doesn't exist" });
     }
+    // valid users only allowed for password verification
     const validatePassword = await bcrypt.compare(
       req.body.password,
       user.password
@@ -22,6 +22,7 @@ userRouter.post("/login", async (req, res) => {
     if (!validatePassword) {
       return res.status(400).json({ message: "Invalid Credentials" });
     } else {
+      // after password validation token will be provided in the response
       const token = jwt.sign({ id: user._id }, process.env.SECRET);
       return res
         .status(200)
@@ -33,23 +34,26 @@ userRouter.post("/login", async (req, res) => {
   }
 });
 
-// Signup
+// Signup Route
 userRouter.post("/signup", async (req, res) => {
   try {
+    // checking for already exsisting user
     const oldUser = await User.findOne({ email: req.body.email });
     if (oldUser) {
       return res.status(400).json({ message: "User Already Exists!" });
     }
-
-    const hashedPassword = bcrypt.hashSync(req.body.password, 10);
-    const newUser = await new User({
-      ...req.body,
-      password: hashedPassword,
-    }).save();
-    const token = jwt.sign({ id: newUser._id }, process.env.SECRET);
-    return res
-      .status(200)
-      .json({ message: "New User Created Successfully", token });
+    //  paddword encryption
+    else {
+      const hashedPassword = bcrypt.hashSync(req.body.password, 10);
+      const newUser = await new User({
+        ...req.body,
+        password: hashedPassword,
+      }).save();
+      const token = jwt.sign({ id: newUser._id }, process.env.SECRET);
+      return res
+        .status(200)
+        .json({ message: "New User Created Successfully", token });
+    }
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: "internal server error", error });

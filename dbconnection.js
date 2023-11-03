@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import "dotenv/config";
 
+// function for connecting to the DB
 export default function dbConnection() {
   const params = {
     useNewUrlParser: true,

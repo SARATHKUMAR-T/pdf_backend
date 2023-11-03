@@ -2,10 +2,10 @@ import jwt from "jsonwebtoken";
 import { User } from "./Models/User.js";
 import "dotenv/config";
 
+// Authentication middlware function
 const isAuthenticated = async (req, res, next) => {
   try {
     const token = req.headers["x-auth-token"];
-
     if (!token) {
       return res.status(400).json({ message: "Access Denied" });
     }
@@ -15,7 +15,6 @@ const isAuthenticated = async (req, res, next) => {
     next();
   } catch (error) {
     console.error(error);
-
     if (error.name === "JsonWebTokenError") {
       return res.status(400).json({ message: "Invalid Authorization" });
     }
