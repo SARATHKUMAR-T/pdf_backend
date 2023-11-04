@@ -11,12 +11,9 @@ This documentation outlines the PDF Backend, a Node.js and Express web server th
 5. [Database](#database)
 6. [User Routes](#user-routes)
 7. [PDF Routes](#pdf-routes)
-8. [API Endpoints](#api-endpoints)
-9. [Usage](#usage)
-10. [Testing](#testing)
-11. [Deployment](#deployment)
-12. [Support and Contact](#support-and-contact)
-13. [License](#license)
+8. [Usage](#usage)
+9. [Testing](#testing)
+10. [Deployment](#deployment)
 
 ## Features<a name="features"></a>
 
@@ -53,40 +50,26 @@ This documentation outlines the PDF Backend, a Node.js and Express web server th
 
 - **POST /api/signup**: Register a new user.
 - **POST /api/login**: Authenticate and log in a user.
-- Implement your route details here.
+- User details must have email,username and password.
 
 ## PDF Routes<a name="pdf-routes"></a>
 
-- Describe your PDF routes and their purposes.
-- Include routes for creating, reading, updating, and deleting PDF files.
+- **POST /api/uploadfiles**: Upload a new pdffile metadata.
+- **GET /api/getfiles**: Get all files related to particular user.
 
-## API Endpoints<a name="api-endpoints"></a>
-
-- Provide a list of your API endpoints, including their names and descriptions.
-- Use a format like: `GET /api/route - Get route details`.
 
 ## Usage<a name="usage"></a>
 
-- Instructions for setting up and running the backend.
-- Include environment variables, dependencies, and configurations.
+- Clone this repo.
+- Run npm install to install necessary packages.
+- create .env file on the root folder.
+- add SECRET KEY and MONGODB_URL on the .env file.
+- Run npm start command to start the server.
 
-## Testing<a name="testing"></a>
-
-- Explain how to test the application, including unit tests and integration tests.
-- Mention any testing frameworks or tools used.
 
 ## Deployment<a name="deployment"></a>
 
-- Guide for deploying the backend to a production environment.
-- Include hosting options, configuration, and best practices.
+- Push your repo to github.
+- Use vercel for deployment.
 
-## Support and Contact<a name="support-and-contact"></a>
-
-- Offer information on how users can seek support, report issues, or contact your team.
-- Mention any community forums or contact channels.
-
-## License<a name="license"></a>
-
-- Specify the license under which your backend is released.
-- Include a link to the full license text or file.
 
