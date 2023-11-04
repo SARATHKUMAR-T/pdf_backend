@@ -12,8 +12,7 @@ This documentation outlines the PDF Backend, a Node.js and Express web server th
 6. [User Routes](#user-routes)
 7. [PDF Routes](#pdf-routes)
 8. [Usage](#usage)
-9. [Testing](#testing)
-10. [Deployment](#deployment)
+9. [Deployment](#deployment)
 
 ## Features<a name="features"></a>
 
