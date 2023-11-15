@@ -14,7 +14,6 @@ pdfRouter.get("/get-files", isAuthenticated, async (req, res) => {
 });
 
 pdfRouter.post("/upload-files", isAuthenticated, async (req, res) => {
-  console.log(req.headers);
   try {
     const file = await new PdfDetails({
       file: req.body.file,
@@ -38,7 +37,6 @@ pdfRouter.delete("/delete-file/:id", isAuthenticated, async (req, res) => {
       _id: req.params.id,
     });
     if (!deletePdf) {
-      res;
       res.status(400).json({ message: "Unable to Delete File" });
       return;
     } else {
